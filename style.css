@@ -1,0 +1,188 @@
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+  }  
+
+  body {  
+    font-family: "Arial", sans-serif;  
+    background: linear-gradient(45deg, #e7d68e, #948374);  
+    color: #776e65;  
+    min-height: 100vh;  
+    display: flex;  
+    justify-content: center;  
+    flex-direction: column;  
+    align-items: center;  
+  }  
+
+  .game-title-h1 {  
+    font-size: 60px;  
+    margin-bottom: 0px;  
+    color: #6e6235;  
+    text-align: left;  
+  }  
+
+  .game-title-h2 {  
+    font-size: 15px;  
+    margin-top: 0px;  
+    color: #6e6235;  
+    text-align: left;  
+  }  
+
+  .game-container {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    gap: 20px;  
+  }  
+
+  /* 修改分数面板的样式 */  
+  .score-panel {  
+    display: flex;  
+    justify-content: space-between; /* 使当前分数和最高分数并列显示 */  
+    align-items: center; /* 垂直居中对齐 */  
+    width: 100%;  
+    max-width: 500px; /* 限制最大宽度 */  
+    margin-bottom: 10px; /* 添加与游戏网格的间距 */  
+  }  
+
+  .score-box {  
+    background: linear-gradient(45deg, #e7d68e, #948374);  
+    padding: 15px 25px;  
+    border-radius: 6px;  
+    text-align: center;  
+    min-width: 100px; /* 设置最小宽度 */  
+    margin-left: 20px; /* 添加左侧间距 */  
+  }  
+
+  /* New Game按钮样式 */  
+  .new-game-button {  
+    background-color: #dccd6d; /* 按钮颜色 */  
+    width: 150px;  
+    height: 40px;  
+    border: none;  
+    border-radius: 10px;  
+    color: white;  
+    padding: 10px 20px;  
+    font-size: 16px;  
+    cursor: pointer;  
+    transition: background-color 0.3s;  
+    margin-left: 20px; /* 添加左侧间距 */  
+  }  
+
+  .new-game-button:hover {  
+    background-color: #27ae60; /* 鼠标悬停颜色 */  
+  }  
+
+  /* 游戏主区域 */  
+  .game-board {  
+    background: linear-gradient(45deg, #e7d68e, #948374);  
+    padding: 15px;  
+    border-radius: 6px;  
+    width: 500px;  
+    height: 500px;  
+    display: grid;  
+    grid-template-columns: repeat(4, 1fr);  
+    grid-gap: 15px;  
+    position: relative;  
+  }  
+
+  .tile {  
+    background: #e7b177;  
+    border-radius: 3px;  
+    width: 100%;  
+    height: 100%;  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    font-size: 35px; /* 统一字体大小 */  
+    font-weight: bold;  
+    transition: all 0.15s ease;  
+    min-height: 80px; /* 设置最小高度 */  
+  }  
+
+  /* 开始按钮 */  
+  .start-button {  
+    position: absolute;  
+    top: 50%;  
+    left: 50%;  
+    transform: translate(-50%, -50%) rotate(90deg); /* 旋转90度 */  
+    width: 0;  
+    height: 0;  
+    border-left: 50px solid transparent;  
+    border-right: 50px solid transparent;  
+    border-bottom: 100px solid #e1ee71; /* 三角形颜色 */  
+    cursor: pointer;  
+    transition: background 0.3s;  
+    z-index: 10; /* 确保按钮在最上层 */  
+  }  
+
+  .start-button:hover {  
+    background: #27ae60; /* 鼠标悬停时的颜色 */  
+  }  
+
+  /* 模糊背景 */  
+  .blur-background {  
+    position: absolute;  
+    top: 0;  
+    left: 0;  
+    right: 0;  
+    bottom: 0;  
+    backdrop-filter: blur(5px); /* 模糊效果 */  
+    z-index: 5; /* 确保模糊层在按钮下方 */  
+    display: block; /* 默认显示 */  
+  }  
+
+  .score-label {  
+    color: #f8ef88;  
+    text-transform: uppercase;  
+    font-size: 13px;  
+    margin-bottom: 5px;  
+    font-weight: bold;  
+  }  
+
+  .score-value {  
+    color: white;  
+    font-size: 25px;  
+    font-weight: bold;  
+  }  
+
+  a {  
+    color: #504d2b; /* 链接颜色 */  
+    text-decoration: none; /* 去掉下划线 */  
+  }  
+
+  h2 {  
+    font-size: 20px; /* 设置字体大小 */  
+    font-weight: bold; /* 设置字体加粗 */  
+    color: #6e6235; /* 设置字体颜色 */  
+    text-align: center; /* 文字居中 */  
+    margin: 20px 0; /* 设置上下边距 */  
+    padding: 0; /* 无内边距 */  
+  }  
+
+  /* 新增的内容样式 */  
+  .info-section {  
+    max-width: 500px;  
+  }  
+  p {  
+        font-size: 18px; /* Set font size */  
+        line-height: 1.5; /* Set line height */  
+        margin-top: 15px; /* Space above paragraphs */  
+        margin-bottom: 15px; /* Space below paragraphs */  
+    }  
+
+  /* 响应式设计 */  
+  @media (max-width: 768px) {  
+    .game-container {  
+      flex-direction: column;  
+      gap: 20px;  
+    }  
+
+    .game-board {  
+      width: 100%;  
+      max-width: 400px;  
+      height: auto;  
+      aspect-ratio: 1;  
+    }  
+  }  

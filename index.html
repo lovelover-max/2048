@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Play the classic 2048 game with AI-powered 2048 Cupcakes and Unblocked versions! Enjoy this addictive puzzle game anytime, anywhere. Start your AI-enhanced 2048 adventure now!"
+    />
+    <title>
+      AI 2048 Game - Play 2048 Cupcakes & Unblocked Versions |
+      ai-cupcake-2048-unblocked.com
+    </title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="score-panel">
+        <div>
+          <h1 class="game-title-h1">
+            <a href="./" title="2048 game"> 2048 </a>
+          </h1>
+          <h2 class="game-title-h2">
+            <a href="./" title="2048 Unblocked && Cupcakes 2048">
+              AI-Powered 2048 Game: Play 2048 Cupcakes and Unblocked Versions!
+            </a>
+          </h2>
+        </div>
+
+        <div class="score-box">
+          <div class="score-label">Score</div>
+          <div class="score-value" id="current-score">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label">Best</div>
+          <div class="score-value" id="best-score">2048</div>
+        </div>
+      </div>
+
+      <div class="game-board" id="game-board">
+        <!-- 16个格子 -->
+        <div class="tile" data-value="2">2</div>
+        <div class="tile" data-value="4">4</div>
+        <div class="tile" data-value="8">8</div>
+        <div class="tile" data-value="16">16</div>
+        <div class="tile" data-value="32">32</div>
+        <div class="tile" data-value="64">64</div>
+        <div class="tile" data-value="128">128</div>
+        <div class="tile" data-value="256">256</div>
+        <div class="tile" data-value="512">512</div>
+        <div class="tile" data-value="1024">1024</div>
+        <div class="tile" data-value="2048">2048</div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+
+        <!-- 模糊背景 -->
+        <div class="blur-background" id="blur-background"></div>
+
+        <!-- 开始按钮 -->
+        <div class="start-button" id="start-button" onclick="startGame()"></div>
+      </div>
+
+      <!-- 新增加的“New Game”按钮 -->
+      <button class="new-game-button" onclick="location.reload()">
+        New Game
+      </button>
+
+      <!-- 游戏玩法和游戏介绍部分 -->
+      <div class="info-section">
+        <h2>
+          <a href="./" title="How to play the 2048 game"
+            >How to play the 2048 game</a
+          >
+        </h2>
+        <p>
+          To play the game, use the arrow keys on your keyboard to move the
+          tiles in the desired direction. As you slide the tiles, look for
+          opportunities to merge tiles that have the same number. When two
+          identical tiles collide, they will combine to form a larger tile,
+          effectively doubling their value. Your ultimate goal is to
+          strategically maneuver the tiles to reach the coveted 2048 tile. Along
+          the way, aim to achieve the highest score possible by continuously
+          merging tiles and creating larger numbers. Remember, careful planning
+          and foresight are key to mastering the game and achieving victory!
+        </p>
+      </div>
+
+      <div class="info-section">
+        <h2>
+          <a href="./" title="Discover the Exciting World of 2048!"
+            >Discover the Exciting World of 2048!</a
+          >
+        </h2>
+        <p>
+          Welcome to the <strong>2048 game</strong>, a captivating and addictive
+          puzzle experience that challenges your strategic thinking and
+          problem-solving skills! In this game, your objective is to merge tiles
+          with the same number by using the arrow keys, ultimately aiming to
+          create the coveted <strong>2048 tile</strong>.
+        </p>
+        <p>
+          But that’s not all! Explore unique variations like
+          <strong>2048 Cupcakes</strong>, where delightful cupcake-themed tiles
+          add a fun twist to the classic gameplay. If you’re looking for a way
+          to play without restrictions, check out
+          <strong>2048 Unblocked</strong> versions, allowing you to enjoy the
+          game anytime, anywhere, whether at school or work.
+        </p>
+        <p>
+          For fans of Taylor Swift, don’t miss the
+          <strong>Taylor Swift 2048</strong> edition, where you can combine your
+          love for music with this engaging puzzle game. Additionally, platforms
+          like <strong>Math Playground</strong> and <strong>ABCya</strong> offer
+          educational versions of <strong>2048</strong>, making it a perfect
+          choice for kids to enhance their math skills while having fun.
+        </p>
+        <p>
+          If you’re in the mood for something different, try
+          <strong>Doge 2048</strong> or <strong>2048: Nowhere to Run</strong>,
+          which introduce exciting new elements to the classic gameplay. With
+          various themes and styles, including the delightful
+          <strong>Cupcakes 2048</strong>, there’s a version of 2048 for
+          everyone!
+        </p>
+        <p>
+          Join millions of players worldwide and challenge yourself to reach the
+          highest score possible in this thrilling game. Whether you’re a
+          seasoned player or new to the world of 2048, you’re sure to enjoy the
+          endless fun and excitement it offers. Start your journey today and see
+          if you can conquer the <strong>2048 tile</strong>!
+        </p>
+      </div>
+    </div>
+
+    <div
+      id="game-over"
+      style="
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      "
+    >
+      <h2 style="height: 30px; margin-bottom: 20px">Game Over</h2>
+      <p style="height: 30px; margin-bottom: 20px">
+        Game over! Your score is: <span id="final-score"></span>
+      </p>
+      <button
+        style="
+          margin-top: 30px;
+          background-color: #2ecc71;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        "
+        onclick="location.reload()"
+      >
+        Restart
+      </button>
+    </div>
+    <script src="./script.js"></script>
+
+    <div style="display: none">
+      <!-- Google tag (gtag.js) -->
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-6SFQZHY8WE"
+      ></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-6SFQZHY8WE");
+      </script>
+    </div>
+  </body>
+</html>
